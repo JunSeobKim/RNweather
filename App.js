@@ -9,14 +9,23 @@ const API_KEY = "4b4ff6b08388df14010977362fadd67d";
 
 export default class extends React.Component {
   state = {
-    isLoding: true
+    isLoading: true
   };
 
   getWeather = async (latitude, longitude) => {
-    const { data } = await axios.get(
+    const {
+      data: {
+        main: { temp },
+        weather
+      }
+    } = await axios.get(
       `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=${API_KEY}&units=metric`
     );
-    this.setState({ isLoding: false, temp: data.main.temp });
+    this.setState({
+      isLoading: false,
+      condition: weather[0].main,
+      temp
+    });
   };
 
   getLocation = async () => {
@@ -29,7 +38,7 @@ export default class extends React.Component {
       // API로 위도,경도 보내고 날씨 정보 얻기
       this.getWeather(latitude, longitude);
       console.log(latitude, longitude);
-      this.state({ isLoding: false });
+      this.setState({ isLoading: false });
     } catch (error) {
       Alert.alert("위치를 찾을 수 없습니다");
     }
@@ -39,7 +48,11 @@ export default class extends React.Component {
     this.getLocation();
   }
   render() {
-    const { isLoding, temp } = this.state;
-    return isLoding ? <Loading /> : <Weather temp={Math.round(temp)} />;
+    const { isLoading, temp, condition } = this.state;
+    return isLoading ? (
+      <Loading />
+    ) : (
+      <Weather temp={Math.round(temp)} condition={condition} />
+    );
   }
 }
