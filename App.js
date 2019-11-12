@@ -32,14 +32,12 @@ export default class extends React.Component {
   getLocation = async () => {
     try {
       const response = await Location.requestPermissionsAsync();
-      console.log(response);
       const {
         coords: { latitude, longitude }
       } = await Location.getCurrentPositionAsync();
       // API로 위도,경도 보내고 날씨 정보 얻기
-      this.getWeather(latitude, longitude);
       console.log(latitude, longitude);
-      this.setState({ isLoading: false });
+      this.getWeather(latitude, longitude);
     } catch (error) {
       Alert.alert("위치를 찾을 수 없습니다");
     }

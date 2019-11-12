@@ -5,19 +5,59 @@ import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
 const weatherOptions = {
-  Clouds: { iconName: "ios-cloud-outline", gradient: ["#bdc3c7", "#2c3e50"] },
-  Clear: { iconName: "ios-moon", gradient: ["#CAC531", "#F3F9A7"] }
+  Clouds: {
+    iconName: "ios-cloud-outline",
+    gradient: ["#2c3e50", "#bdc3c7"]
+  },
+  Clear: {
+    iconName: "ios-moon",
+    gradient: ["#605C3C", "#3C3B3F"],
+    color: "yellow"
+  },
+  Thunderstorm: {
+    iconName: "",
+    gradient: []
+  },
+  Drizzle: {
+    iconName: "",
+    gradient: []
+  },
+  Rain: {
+    iconName: "ios-rainy",
+    gradient: ["#8e9eab", "#eef2f3"]
+  },
+  Snow: {
+    iconName: "ios-snow",
+    gradient: []
+  },
+  Haze: {
+    iconName: "",
+    gradient: []
+  },
+  Mist: {
+    iconName: "",
+    gradient: []
+  },
+  Dust: {
+    iconName: "",
+    gradient: []
+  }
 };
 
 export default function Weather({ temp, condition }) {
+  console.log(temp);
+  console.log(condition);
   return (
-    <LinearGradient colors={["#4c669f", "#ffffff"]} style={styles.container}>
+    <LinearGradient
+      colors={weatherOptions[condition].gradient}
+      style={styles.container}
+    >
       <StatusBar barStyle="light-content" />
       <View style={styles.halfContainer}>
         <Ionicons
-          name={weatherOptions["Clear"].iconName}
+          name={weatherOptions[condition].iconName}
           size={96}
-          color="white"
+          color={weatherOptions[condition].color || "white"}
         />
         <Text style={styles.temp}>{temp}º</Text>
       </View>
