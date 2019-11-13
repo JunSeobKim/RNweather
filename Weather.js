@@ -15,12 +15,12 @@ const weatherOptions = {
     color: "yellow"
   },
   Thunderstorm: {
-    iconName: "",
-    gradient: []
+    iconName: "ios-thunderstorm",
+    gradient: ["#D38312", "#A83279"]
   },
   Drizzle: {
-    iconName: "",
-    gradient: []
+    iconName: "md-rainy",
+    gradient: ["#4CA1AF", "#C4E0E5"]
   },
   Rain: {
     iconName: "ios-rainy",
@@ -28,19 +28,19 @@ const weatherOptions = {
   },
   Snow: {
     iconName: "ios-snow",
-    gradient: []
+    gradient: ["#83a4d4", "#b6fbff"]
   },
   Haze: {
-    iconName: "",
-    gradient: []
+    iconName: "ios-reorder",
+    gradient: ["#B993D6", "#8CA6DB"]
   },
   Mist: {
-    iconName: "",
-    gradient: []
+    iconName: "ios-reorder",
+    gradient: ["#B993D6", "#8CA6DB"]
   },
   Dust: {
-    iconName: "",
-    gradient: []
+    iconName: "md-apps",
+    gradient: ["#E6DADA", "#274046"]
   }
 };
 
