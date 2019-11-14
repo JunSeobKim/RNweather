@@ -7,40 +7,49 @@ import { LinearGradient } from "expo-linear-gradient";
 const weatherOptions = {
   Clouds: {
     iconName: "ios-cloud-outline",
-    gradient: ["#2c3e50", "#bdc3c7"]
+    gradient: ["#2c3e50", "#bdc3c7"],
+    title: "구름 많음"
   },
   Clear: {
     iconName: "ios-moon",
     gradient: ["#605C3C", "#3C3B3F"],
-    color: "yellow"
+    color: "yellow",
+    title: "맑음"
   },
   Thunderstorm: {
     iconName: "ios-thunderstorm",
-    gradient: ["#D38312", "#A83279"]
+    gradient: ["#D38312", "#A83279"],
+    title: "천둥, 번개"
   },
   Drizzle: {
     iconName: "md-rainy",
-    gradient: ["#4CA1AF", "#C4E0E5"]
+    gradient: ["#4CA1AF", "#C4E0E5"],
+    title: "이슬비"
   },
   Rain: {
     iconName: "ios-rainy",
-    gradient: ["#8e9eab", "#eef2f3"]
+    gradient: ["#8e9eab", "#eef2f3"],
+    title: "비"
   },
   Snow: {
     iconName: "ios-snow",
-    gradient: ["#83a4d4", "#b6fbff"]
+    gradient: ["#83a4d4", "#b6fbff"],
+    title: "눈"
   },
   Haze: {
     iconName: "ios-reorder",
-    gradient: ["#B993D6", "#8CA6DB"]
+    gradient: ["#B993D6", "#8CA6DB"],
+    title: "진한 안개"
   },
   Mist: {
     iconName: "ios-reorder",
-    gradient: ["#B993D6", "#8CA6DB"]
+    gradient: ["#B993D6", "#8CA6DB"],
+    title: "옅은 안개"
   },
   Dust: {
     iconName: "md-apps",
-    gradient: ["#E6DADA", "#274046"]
+    gradient: ["#E6DADA", "#274046"],
+    title: "미세 먼지"
   }
 };
 
@@ -61,7 +70,9 @@ export default function Weather({ temp, condition }) {
         />
         <Text style={styles.temp}>{temp}º</Text>
       </View>
-      <View style={styles.halfContainer}></View>
+      <View style={{ ...styles.halfContainer, ...styles.textContainer }}>
+        <Text style={styles.title}>{weatherOptions[condition].title}</Text>
+      </View>
     </LinearGradient>
   );
 }
@@ -97,5 +108,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
+  },
+  title: {
+    color: "white",
+    fontSize: 44,
+    fontWeight: "300",
+    marginBottom: 10
+  },
+  textContainer: {
+    paddingHorizontal: 20,
+    alignItems: "flex-start"
   }
 });
