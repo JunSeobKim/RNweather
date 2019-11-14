@@ -11,8 +11,8 @@ const weatherOptions = {
     title: "구름 많음"
   },
   Clear: {
-    iconName: "ios-moon",
-    gradient: ["#605C3C", "#3C3B3F"],
+    iconName: "ios-sunny",
+    gradient: ["#fceabb", "#f8b500"],
     color: "yellow",
     title: "맑음"
   },
